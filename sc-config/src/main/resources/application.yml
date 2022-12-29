@@ -1,0 +1,17 @@
+server:
+  port: 18888
+spring:
+  application:
+    name: sc-config
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:/config
+eureka:
+  instance:
+    hostname: localhost
+    ip-address: 127.0.0.1
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:18761/eureka

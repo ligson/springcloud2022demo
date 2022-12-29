@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: sc-gw
+  cloud:
+    gateway:
+      #routes:
+      #  - id: sc-uc
+      #    uri: lb://sc-uc
+      #    predicates:
+      #      - Path=/sc-uc/**
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+          filters:
+            - StripPrefix=0
+    config:
+      discovery:
+        enabled: true
+        service-id: sc-config
+      #uri: http://127.0.0.1:18888
+  config:
+    import: "optional:configserver:http://127.0.0.1:18888"
+eureka:
+  instance:
+    hostname: localhost
+    ip-address: 127.0.0.1
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:18761/eureka
+server:
+  port: 10001
+logging:
+  level:
+    org.springframework.cloud.gateway: error
+    org.ligson: debug
