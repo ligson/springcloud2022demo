@@ -7,6 +7,16 @@ spring:
 eureka:
   instance:
     hostname: localhost
+  server:
+    #renewal-percent-threshold: 0.49  # 调低开发测试环境的健康检查敏感度，生产环境需要调大或删除使用默认值
+    # 关闭保护机制
+    enable-self-preservation: false
+    #剔除失效服务间隔
+    #eviction-interval-timer-in-ms: 3600000
+    # 禁用只读缓存
+    use-read-only-response-cache: false
+    # 读写缓存更新时间
+    responseCacheAutoExpirationInSeconds: 1
   client:
     registerWithEureka: false
     fetchRegistry: false
