@@ -9,6 +9,22 @@ spring:
       #uri: http://127.0.0.1:18888
   config:
     import: "optional:configserver:http://127.0.0.1:18888"
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      jdbc-url: jdbc:mysql://10.16.25.49:3308/hotnews220515
+      username: hotnews220515
+      password: hotnews220515
+      idle-timeout: 60000
+      connection-timeout: 10000
+      max-lifetime: 60000
+      maximum-pool-size: 10
+      connection-test-query: select 1
+    url: ${spring.datasource.hikari.jdbc-url}
+  jpa:
+    hibernate:
+      ddl-auto: update
+#jdbc:mysql://10.16.25.49:3308/hotnews220515
 eureka:
   instance:
     hostname: localhost
@@ -19,3 +35,6 @@ eureka:
 server:
   servlet:
     context-path: /${spring.application.name}
+logging:
+  level:
+    org.ligson: debug
